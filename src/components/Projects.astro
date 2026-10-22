@@ -1,0 +1,32 @@
+---
+import { projects } from '../data/profile';
+const shown = projects.filter((p) => p.brief);
+---
+
+<section id="projects" class="section reveal">
+  <h2><span class="mono num">03</span> Projects</h2>
+  <div class="cards">
+    {shown.map((p) => (
+      <article class="card">
+        <header>
+          <p class="mono meta">{p.type}</p>
+          {p.status && <span class={`pill ${p.status === 'Live' ? 'live' : ''}`}>{p.status}</span>}
+        </header>
+        <h3>
+          {p.link
+            ? <a href={p.link} target="_blank" rel="noopener">{p.name} <span aria-hidden="true">↗</span></a>
+            : p.name}
+        </h3>
+        <p>{p.brief}</p>
+        {p.details.length > 0 && (
+          <ul class="bullets">
+            {p.details.map((d) => <li>{d}</li>)}
+          </ul>
+        )}
+        <ul class="tags">
+          {p.tools.map((t) => <li>{t}</li>)}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,10 @@
+---
+import { about } from '../data/profile';
+---
+
+<section id="about" class="section reveal">
+  <h2><span class="mono num">01</span> About</h2>
+  <div class="prose">
+    {about.map((p) => <p>{p}</p>)}
+  </div>
+</section>

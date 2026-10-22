@@ -1,0 +1,41 @@
+---
+import { experience } from '../data/profile';
+---
+
+<section id="experience" class="section reveal">
+  <h2><span class="mono num">02</span> Experience</h2>
+  <ol class="timeline">
+    {experience.map((job) => (
+      <li class="job">
+        <div class="job-logo" aria-hidden="true">
+          {job.logo
+            ? <span class="logo-mask" style={`--src:url(${import.meta.env.BASE_URL}/${job.logo})`}></span>
+            : <span class="initials">{job.company.split(' ').map((w) => w[0]).slice(0, 2).join('')}</span>}
+        </div>
+        <div class="job-body">
+          <div class="job-head">
+            <h3>{job.role} <span class="at">@ {job.company}</span></h3>
+            <p class="mono meta">
+              {[job.when, job.where].filter(Boolean).join(' · ')}
+              {job.current && <span class="pill live">Current</span>}
+              {job.badge && <span class="pill">{job.badge}</span>}
+            </p>
+          </div>
+          <p>{job.brief}</p>
+          <ul class="bullets">
+            {job.details.map((d) => <li>{d}</li>)}
+          </ul>
+          {job.story && (
+            <details>
+              <summary>The backstory</summary>
+              <p>{job.story}</p>
+            </details>
+          )}
+          <ul class="tags">
+            {job.tools.map((t) => <li>{t}</li>)}
+          </ul>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

@@ -1,0 +1,18 @@
+---
+import { life } from '../data/profile';
+---
+
+<section id="life" class="section reveal">
+  <h2><span class="mono num">05</span> Off the clock</h2>
+  <ul class="life">
+    {life.map((l) => (
+      <li>
+        <span class="emoji" aria-hidden="true">{l.emoji}</span>
+        <div>
+          <h3>{l.what}</h3>
+          <p>{l.line}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
